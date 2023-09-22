@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
-
+import 'package:intl/intl.dart';
 class AppSettings extends StatefulWidget {
   @override
   _AppSettingsState createState() => _AppSettingsState();
@@ -34,7 +34,7 @@ class _AppSettingsState extends State<AppSettings> {
     super.initState();
   }
 
-
+  String currentDate = DateFormat('dd-MMM-yyyy hh:mm a').format(DateTime.now());
   Widget build(BuildContext context) {
     return Scaffold(
         //resizeToAvoidBottomPadding: false,
@@ -118,7 +118,7 @@ class _AppSettingsState extends State<AppSettings> {
                         )),
                     Center(
                         child: Padding(
-                            padding: EdgeInsets.only(top: 20),
+                            padding: EdgeInsets.only(top: 5),
                             child: TextButton.icon(
                               style: TextButton.styleFrom(
                                 textStyle: TextStyle(color: Colors.white),
@@ -139,10 +139,68 @@ class _AppSettingsState extends State<AppSettings> {
                               ),
                               onPressed: _validateInputs,
                             ))),
+                    _tile('Write Review', 'Rate us on Google Play', Icons.card_giftcard,0),
+                    _tile('Send Feedback', 'support@ispent.in', Icons.send,1),
+                    _tile('Why do you need to track expenses and income?', 'https://ispent.in', Icons.cloud_done,2),
+                  Text(currentDate,style: TextStyle(
+                    color: Colors.deepOrange,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none,
+                  ),),
                   ],
                 ))));
   }
+  Future<void> _launchUrl() async {
+    final Uri _url = Uri.parse('https://play.google.com/store/apps/details?id=com.vishvanathaachary.ispent&pcampaignid=web_share');
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+  Future<void> _launchWebUrl() async {
+    final Uri _url = Uri.parse('https://ispent.in');
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+  Future<void> _launchEmailUrl() async {
+    final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'support@ispent.in',
+      queryParameters: {
+        'subject': 'iSpent Support Ticket',
+        'body': ''
+      },
+    );
+    if (!await launchUrl(emailLaunchUri)) {
+      throw Exception('Could not launch $emailLaunchUri');
+    }
+  }
 
+  ListTile _tile(String title, String subtitle, IconData icon, int mode) {
+    return ListTile(
+      dense: true,
+      contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal:
+      20.0),
+      title: Text(
+        title,
+      ),
+      subtitle:
+          InkWell(
+            onTap: mode==2?_launchWebUrl:mode==0?_launchUrl:_launchEmailUrl,
+            child: Text(subtitle,
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.none,
+              ),
+            )
+       ),
+     leading: Icon(
+        icon,
+        color: Colors.blue[500],
+      ),
+    );
+  }
   void _validateInputs() {
     if (_formKey.currentState!.validate()) {
 //    If all data are correct then save data to out variables

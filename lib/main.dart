@@ -13,6 +13,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:ispent/utilities.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+
 double _totalExpense = 0;
 double _totalIncome = 0;
 double _budget = 0;
@@ -103,7 +104,9 @@ class _HomePageState extends State<ISpentHome> implements HomeContract {
               _tile('Naveena Bhandari', 'Shimoga', Icons.person),
               _tile('Ravindar Ganji', 'Greater Hyderabad Telengana', Icons.person),
               _tile('Dr. Jagadeesh Krishna', 'Mysore', Icons.person),
+              _tile('Shivakumar', 'Elevation Media, Bangalore', Icons.person),
               _tile('Madhuri Pai', 'Mangalore', Icons.person),
+
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 0, right: 10),
                 child:
@@ -257,7 +260,7 @@ class _ChoiceCardState extends State<ChoiceCard> {
                     )),
                 _headerBudgetView(context),
                 Divider(
-                    color: Colors.blueGrey
+                    color: Colors.white38
                 ),
                 //_separator(context),
                 _expenseListView(context),
@@ -431,7 +434,7 @@ Widget _headerExpenseView(BuildContext context) {
     children: [
       Expanded(
         child: Padding(
-          padding: EdgeInsets.only(left: 12.0, bottom: 5.0, top: 5),
+          padding: EdgeInsets.only(left: 12.0, bottom: 5.0, top: 15),
           child: Text(
             _swapIndex ==0?"TOTAL EXPENSE":"TOTAL INCOME",
             style: new TextStyle(
@@ -489,11 +492,11 @@ Widget GetTotalIncome()
           _totalIncome = getTotalExpense(_expenditureList);
 
           return Divider(
-              color: Colors.blueGrey
+              color: Colors.white38
           );
         }
         return Divider(
-            color: Colors.blueGrey
+            color: Colors.white38
         );
       });
 
@@ -515,12 +518,13 @@ Widget _expenseListView(BuildContext context) {
 
           return new Column(children: [
             ExpenditureList(_expenditureList, _mode, _year, _monthNumber,_swapIndex, key: GlobalKey(),),
-            // _separator(context),
+
             _headerExpenseView(context),
 
             // _separator(context),
             GetTotalIncome(),
-            _balanceView(context)
+            _balanceView(context),
+
           ]);
         }
         return new Center(child: new CircularProgressIndicator());
@@ -529,6 +533,9 @@ Widget _expenseListView(BuildContext context) {
 
 ListTile _tile(String title, String subtitle, IconData icon) {
   return ListTile(
+    dense: true,
+    contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal:
+    5.0),
     title: Text(
       title,
     ),
