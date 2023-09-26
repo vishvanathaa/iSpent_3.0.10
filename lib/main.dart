@@ -99,8 +99,8 @@ class _HomePageState extends State<ISpentHome> implements HomeContract {
           child: ListView(
             children: [
               _tile('CONTRIBUTORS', '',  Icons.call_received),
-              _tile('Vishvanatha Acharya', 'Udupi', Icons.person),
-              _tile('Shubharathna', 'Udupi', Icons.person),
+              _tile('Vishvanatha Acharya', 'Amasebail, Udupi', Icons.person),
+              _tile('Shubharathna', 'Mandarthi, Udupi', Icons.person),
               _tile('Naveena Bhandari', 'Shimoga', Icons.person),
               _tile('Ravindar Ganji', 'Greater Hyderabad Telengana', Icons.person),
               _tile('Dr. Jagadeesh Krishna', 'Mysore', Icons.person),
