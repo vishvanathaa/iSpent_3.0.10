@@ -1,3 +1,7 @@
+#Copywrite
+
+The copywrite of this project is the name of Vishvanatha Achary Bangalore India.
+
 # ispent
 
 "iSpent is an app designed to track your day to day expenses and income"
