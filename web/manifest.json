@@ -5,7 +5,7 @@
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": ""iSpent is an app designed to track your day to day expenses and income"",
+    "description": "iSpent is an app designed to track your day to day expenses and income",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

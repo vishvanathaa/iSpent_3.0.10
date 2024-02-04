@@ -101,11 +101,12 @@ class _HomePageState extends State<ISpentHome> implements HomeContract {
               _tile('CONTRIBUTORS', '',  Icons.call_received),
               _tile('Vishvanatha Acharya', 'Amasebail, Udupi', Icons.person),
               _tile('Shubharathna', 'Mandarthi, Udupi', Icons.person),
+              _tile('Shivakumar', 'Elevation Media, Bangalore', Icons.person),
               _tile('Naveena Bhandari', 'Shimoga', Icons.person),
               _tile('Ravindar Ganji', 'Greater Hyderabad Telengana', Icons.person),
               _tile('Dr. Jagadeesh Krishna', 'Mysore', Icons.person),
-              _tile('Shivakumar', 'Elevation Media, Bangalore', Icons.person),
-              _tile('Madhuri Pai', 'Mangalore', Icons.person),
+              _tile('Binoy P J', 'Kerala', Icons.person),
+              _tile('Naveen Desouza', 'Bramhavar, Udupi', Icons.person),
 
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 0, right: 10),
@@ -120,7 +121,7 @@ class _HomePageState extends State<ISpentHome> implements HomeContract {
                       TextSpan(
                         text: " This app does not require an internet connection or mobile data to function. Your data is securely stored in your mobile device's memory, and no unauthorized access is possible.",
                         style: TextStyle(
-                          color: Colors.blueGrey,
+                          color: Colors.grey,
                         ),
                       ),
                     ],
@@ -262,7 +263,6 @@ class _ChoiceCardState extends State<ChoiceCard> {
                 Divider(
                     color: Colors.white38
                 ),
-                //_separator(context),
                 _expenseListView(context),
                 _addIncomeButton(context)
 
@@ -373,10 +373,11 @@ Widget _headerBudgetView(BuildContext context) {
             child: Text(
               _budget.toStringAsFixed(2),
               style: new TextStyle(
-                //fontFamily: "Quicksand",
+                fontFamily: "Quicksand",
                 fontSize: 16.0,
                 color: Colors.lightGreen,
                 fontWeight: FontWeight.bold,
+
               ),
             ),
           ),
@@ -402,6 +403,7 @@ Widget _balanceView(BuildContext context) {
                 fontSize: 16.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+
               ),
             ),
           ),
@@ -416,6 +418,7 @@ Widget _balanceView(BuildContext context) {
                 //fontFamily: "Quicksand",
                 fontSize: 16.0,
                 color: (_totalIncome - _totalExpense) > 0 ?Colors.green : Colors.red,
+
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -442,6 +445,7 @@ Widget _headerExpenseView(BuildContext context) {
               fontSize: 16.0,
               color: Colors.white,
               fontWeight: FontWeight.bold,
+
             ),
           ),
         ),
@@ -457,6 +461,7 @@ Widget _headerExpenseView(BuildContext context) {
               fontSize: 16.0,
               color: _swapIndex==0?Colors.orange:Colors.greenAccent,
               fontWeight: FontWeight.bold,
+
             ),
           ),
         ),
@@ -487,13 +492,11 @@ Widget GetTotalIncome()
         var data = snapshot.data;
         if(data != null) {
           _expenditureList = data;
+
         }
         if (snapshot.hasData) {
           _totalIncome = getTotalExpense(_expenditureList);
-
-          return Divider(
-              color: Colors.white38
-          );
+         return _balanceView(context);
         }
         return Divider(
             color: Colors.white38
@@ -520,11 +523,10 @@ Widget _expenseListView(BuildContext context) {
             ExpenditureList(_expenditureList, _mode, _year, _monthNumber,_swapIndex, key: GlobalKey(),),
 
             _headerExpenseView(context),
-
-            // _separator(context),
+            Divider(
+            color: Colors.white38
+        ),
             GetTotalIncome(),
-            _balanceView(context),
-
           ]);
         }
         return new Center(child: new CircularProgressIndicator());
