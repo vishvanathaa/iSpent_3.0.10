@@ -83,7 +83,7 @@ class _CategoryExpenseState extends State<CategoryExpense>
                                                   getIconName(
                                                       _filteredExpenses[index]
                                                           .icon),
-                                                  color: Colors.indigo,
+                                                  color: widget.type==0?Colors.red:Colors.green,
                                                 )),
                                                 Expanded(
                                                     flex: 2,
@@ -167,7 +167,7 @@ class _CategoryExpenseState extends State<CategoryExpense>
                                                                         .id,
                                                                     _filteredExpenses[
                                                                             index]
-                                                                        .amount,0), key: GlobalKey(),)),
+                                                                        .amount,widget.type), key: GlobalKey(),)),
                                                       );
                                                     },
                                                   ),

@@ -35,12 +35,12 @@ class ExpenditureList extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    new Padding(
+                     new Padding(
                         padding: EdgeInsets.only(left: 2.0, right: 0.0),
                         child:  IconButton(
                                 icon: new Icon(
                                   getIconName(expenseList[index].icon),
-                                  color: Colors.greenAccent,
+                                  color: type==0?Colors.pinkAccent:Colors.greenAccent,
                                 ),
                                 onPressed: () {
                                   Navigator.push(

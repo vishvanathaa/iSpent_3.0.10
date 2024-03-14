@@ -116,7 +116,7 @@ class _AddExpenseState extends State<AddExpenseScreen> {
                             // hintText: 'Tell us about yourself',
                             //helperText: 'Keep it short, this is just a demo.',
                             prefixIcon: const Icon(
-                              Icons.monetization_on,
+                              Icons.account_balance_wallet_outlined,
                               color: Colors.indigo,
                             ),
                           ),

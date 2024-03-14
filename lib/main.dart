@@ -105,7 +105,7 @@ class _HomePageState extends State<ISpentHome> implements HomeContract {
               _tile('Naveena Bhandari', 'Shimoga', Icons.person),
               _tile('Ravindar Ganji', 'Greater Hyderabad Telengana', Icons.person),
               _tile('Dr. Jagadeesh Krishna', 'Mysore', Icons.person),
-              _tile('Binoy P J', 'Kerala', Icons.person),
+              _tile('Madhuri Pai', 'Mangalore', Icons.person),
               _tile('Naveen Desouza', 'Bramhavar, Udupi', Icons.person),
 
               Padding(

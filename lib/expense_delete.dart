@@ -78,7 +78,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                 ),
                 Container(
                     padding:
-                        const EdgeInsets.only(left: 20, right: 20, top: 15),
+                        const EdgeInsets.only(left: 20, right: 20, top: 10),
                     child: Column(children: <Widget>[
                       //Text('Basic date field (${format.pattern})'),
                       DateTimeField(
@@ -124,7 +124,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                                   borderSide:
                                       new BorderSide(color: Colors.teal)),
                               prefixIcon: const Icon(
-                                Icons.monetization_on,
+                                Icons.account_balance_wallet,
                                 color: Colors.indigo,
                               ),
                             ),
@@ -185,7 +185,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                                     const Icon(Icons.save, color: Colors.white),
                                 //`Icon` to display
                                 label: Text(
-                                  'UPDATE',
+                                  "UPDATE",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
@@ -204,6 +204,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                                     expenseObj.setExpenditureId(widget.args.id);
                                     updateRecord(widget.args.type);
                                    /*Navigator.pop(context, () {
+
                                       setState(() {});
                                     });*/
                                     Navigator.pushNamed(context, 'first');
@@ -216,7 +217,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                                 },
                               ),
                               Padding(
-                                  padding: EdgeInsets.only(left: 15),
+                                  padding: EdgeInsets.only(left: 10),
                                   child: FloatingActionButton.extended(
                                     backgroundColor: Colors.red,
                                     icon: const Icon(Icons.delete_forever,
@@ -236,7 +237,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
                                           widget.args.title,
                                           widget.args.entryDate,
                                           widget.args.iconName,
-                                          widget.args.note,0);
+                                          widget.args.note,widget.args.type);
                                       expenseObj
                                           .setExpenditureId(widget.args.id);
                                       delete(expenseObj);
@@ -259,7 +260,7 @@ class _DeleteExpenseState extends State<DeleteExpenseScreen> {
 
   Future updateRecord(int swapIndex) async {
     var db = new DatabaseHelper();
-    //.log(widget.args.title);
+
     var expense = new Expenditure(
         double.parse(amountController.text.isEmpty ? "0" : amountController.text),
         widget.args.title,

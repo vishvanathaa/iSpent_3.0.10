@@ -46,7 +46,6 @@ class _TransactionListExpenseState extends State<TransactionList>
           }
           List<Expenditure>? _filteredExpenses = snapshot.data;
           if (snapshot.hasData) {
-
             return new Container(
                 color: Colors.indigo[60],
                 child: Card(
@@ -101,7 +100,7 @@ class _TransactionListExpenseState extends State<TransactionList>
                                               child: Icon(
                                             getIconName(
                                                 _filteredExpenses![index].icon),
-                                            color: Colors.indigo,
+                                            color: _swapIndex==0?Colors.red:Colors.green,
                                           )),
                                           Expanded(
                                               flex: 2,
@@ -128,15 +127,12 @@ class _TransactionListExpenseState extends State<TransactionList>
                                                                       .note,
                                                             )),
                                                         Align(
+
                                                             alignment: Alignment
                                                                 .bottomLeft,
                                                             child: Text(
-                                                              DateFormat(
-                                                                      'EEEE, d MMM, yyyy')
-                                                                  .format(DateTime.parse(
-                                                                      _filteredExpenses[
-                                                                              index]
-                                                                          .entryDate)),
+                                                                DateFormat('EEE, dd MMM-yyyy, hh:mm a').format(DateTime.parse(
+                                                                    _filteredExpenses[index].entryDate)),
                                                               textAlign:
                                                                   TextAlign
                                                                       .left,

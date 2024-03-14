@@ -85,10 +85,9 @@ class _AppSettingsState extends State<AppSettings> {
                                 controller: amountController,
                                 decoration: new InputDecoration(
                                   labelText: "Budget",
-
                                   hintText: 'Your budget',
                                   prefixIcon: const Icon(
-                                    Icons.monetization_on,
+                                    Icons.account_balance_wallet_outlined,
                                     color: Colors.indigo,
                                   ),
                                   /* border: new OutlineInputBorder(

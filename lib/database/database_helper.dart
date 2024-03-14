@@ -83,12 +83,12 @@ class DatabaseHelper {
           month.toString() +
           " AND  CAST(strftime('%Y', strftime('%s',date(entrydate)), 'unixepoch') AS INTEGER)  = " +
           year.toString() +
-          " AND categorytype = "+type.toString()+"";
+          " AND categorytype = "+type.toString()+" ORDER BY entrydate DESC";
     } else {
       query =
           "SELECT * FROM Expenditure WHERE CAST(strftime('%Y', strftime('%s',date(entrydate)), 'unixepoch') AS INTEGER)  = " +
               year.toString() +
-              " AND categorytype = "+type.toString()+"";
+              " AND categorytype = "+type.toString()+" ORDER BY entrydate DESC";
     }
     List<Map> list = await dbClient.rawQuery(query);
     List<Expenditure> expenses = [];
